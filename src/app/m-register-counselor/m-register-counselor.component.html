@@ -1,0 +1,165 @@
+<div class="register-container">
+  <div class="register-card">
+    <h1>Counselor Registration</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Personal Information -->
+      <h2>Personal Information</h2>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" formControlName="fullName">
+        <div *ngIf="submitted && f['fullName'].errors" class="error-message">
+          <div *ngIf="f['fullName'].errors['required']">Full name is required</div>
+          <div *ngIf="f['fullName'].errors['minlength']">Full name must be at least 3 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>NIC</label>
+        <input type="text" formControlName="nic">
+        <div *ngIf="submitted && f['nic'].errors" class="error-message">
+          <div *ngIf="f['nic'].errors['required']">NIC is required</div>
+          <div *ngIf="f['nic'].errors['pattern']">Invalid NIC format</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" formControlName="address">
+        <div *ngIf="submitted && f['address'].errors" class="error-message">
+          <div *ngIf="f['address'].errors['required']">Address is required</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label>Age</label>
+          <input type="number" formControlName="age">
+          <div *ngIf="submitted && f['age'].errors" class="error-message">
+            <div *ngIf="f['age'].errors['required']">Age is required</div>
+            <div *ngIf="f['age'].errors['min']">Age must be at least 15</div>
+            <div *ngIf="f['age'].errors['max']">Age cannot exceed 120</div>
+          </div>
+        </div>
+
+        <div class="form-group half">
+          <label>Gender</label>
+          <select formControlName="gender">
+            <option value="" disabled>Select Gender</option>
+            <option *ngFor="let option of genderOptions" [value]="option">{{option}}</option>
+          </select>
+          <div *ngIf="submitted && f['gender'].errors" class="error-message">
+            <div *ngIf="f['gender'].errors['required']">Gender is required</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <h2>Contact Information</h2>
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" formControlName="mobileNumber">
+        <div *ngIf="submitted && f['mobileNumber'].errors" class="error-message">
+          <div *ngIf="f['mobileNumber'].errors['required']">Mobile number is required</div>
+          <div *ngIf="f['mobileNumber'].errors['pattern']">Invalid mobile number format</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email">
+        <div *ngIf="submitted && f['email'].errors" class="error-message">
+          <div *ngIf="f['email'].errors['required']">Email is required</div>
+          <div *ngIf="f['email'].errors['email']">Invalid email format</div>
+        </div>
+      </div>
+
+      <!-- Professional Information -->
+      <h2>Professional Information</h2>
+      <div class="form-group">
+        <label>Specialization</label>
+        <select formControlName="specialization">
+          <option value="" disabled>Select Specialization</option>
+          <option *ngFor="let option of specializationOptions" [value]="option">{{option}}</option>
+        </select>
+        <div *ngIf="submitted && f['specialization'].errors" class="error-message">
+          <div *ngIf="f['specialization'].errors['required']">Specialization is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Years of Experience</label>
+        <input type="number" formControlName="experience">
+        <div *ngIf="submitted && f['experience'].errors" class="error-message">
+          <div *ngIf="f['experience'].errors['required']">Experience is required</div>
+          <div *ngIf="f['experience'].errors['min']">Experience cannot be negative</div>
+          <div *ngIf="f['experience'].errors['max']">Experience cannot exceed 60 years</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Professional Qualification</label>
+        <input type="text" formControlName="qualification">
+        <div *ngIf="submitted && f['qualification'].errors" class="error-message">
+          <div *ngIf="f['qualification'].errors['required']">Qualification is required</div>
+        </div>
+      </div>
+
+      <!-- Certificates -->
+      <div class="form-group file-upload">
+        <label>Upload Certificates (Multiple files allowed)</label>
+        <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" multiple>
+      </div>
+
+      <div class="form-group">
+        <label>License Number</label>
+        <input type="text" formControlName="licenseNumber">
+        <div *ngIf="submitted && f['licenseNumber'].errors" class="error-message">
+          <div *ngIf="f['licenseNumber'].errors['required']">License number is required</div>
+        </div>
+      </div>
+
+      
+      <!-- Certificates -->
+      <!-- <div class="form-group file-upload">
+        <label>Upload Certificates (Multiple files allowed)</label>
+        <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" multiple>
+      </div> -->
+
+      <!-- Account Information -->
+      <h2>Account Information</h2>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" formControlName="username">
+        <div *ngIf="submitted && f['username'].errors" class="error-message">
+          <div *ngIf="f['username'].errors['required']">Username is required</div>
+          <div *ngIf="f['username'].errors['minlength']">Username must be at least 4 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" formControlName="password">
+        <div *ngIf="submitted && f['password'].errors" class="error-message">
+          <div *ngIf="f['password'].errors['required']">Password is required</div>
+          <div *ngIf="f['password'].errors['minlength']">Password must be at least 8 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword">
+        <div *ngIf="submitted && f['confirmPassword'].errors" class="error-message">
+          <div *ngIf="f['confirmPassword'].errors['required']">Confirm password is required</div>
+          <div *ngIf="f['confirmPassword'].errors['passwordMismatch']">Passwords do not match</div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">REGISTER AS COUNSELOR</button>
+    </form>
+
+    <div class="login-link">
+      Already have an account? <a href="login">Login</a>
+    </div>
+  </div>
+</div>

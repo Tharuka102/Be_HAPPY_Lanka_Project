@@ -1,0 +1,27 @@
+<div class="reset-password-container">
+    <div class="reset-password-card">
+      <h2>Verify Code</h2>
+      <p class="step-indicator">Step 2 of 3</p>
+      <form [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="code">Verification Code</label>
+          <input 
+            type="text" 
+            id="code" 
+            formControlName="code"
+            [class.error]="code?.invalid && code?.touched"
+            placeholder="Enter 6-digit code"
+            maxlength="6"
+          >
+          <div class="error-message" *ngIf="code?.invalid && code?.touched">
+            <span *ngIf="code?.errors?.['required']">Verification code is required</span>
+            <span *ngIf="code?.errors?.['pattern']">Please enter a valid 6-digit code</span>
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="verifyForm.invalid">Verify Code</button>
+        <button type="button" class="secondary-button" (click)="resendCode()">Resend Code</button>
+        <a routerLink="/m-reset-email" class="back-link">Back to Email Entry</a>
+      </form>
+    </div>
+  </div>

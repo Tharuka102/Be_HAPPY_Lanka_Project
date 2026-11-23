@@ -1,0 +1,132 @@
+<div class="articles-container">
+      <h1 class="page-title">Articles</h1>
+      
+      <div class="tabs">
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'browse'"
+          (click)="setActiveTab('browse')"
+        >
+          Browse Articles
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'my-articles'"
+          (click)="setActiveTab('my-articles')"
+        >
+          My Articles
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'write'"
+          (click)="setActiveTab('write')"
+        >
+          Write New Article
+        </button>
+      </div>
+      
+      <!-- Write Article Tab -->
+      <div class="articles-content" *ngIf="activeTab === 'write'">
+        <div class="editor-card">
+          <div class="editor-header">
+            <h2 class="editor-title">Create New Article</h2>
+          </div>
+          
+          <div class="editor-form">
+            <div class="form-group">
+              <label class="form-label">Title</label>
+              <input 
+                type="text" 
+                class="form-input" 
+                placeholder="Enter article title..." 
+                [(ngModel)]="newArticle.title"
+              >
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Content</label>
+              <div class="rich-editor">
+                <div class="editor-toolbar">
+                  <button class="toolbar-btn" (click)="formatText('bold')">B</button>
+                  <button class="toolbar-btn" (click)="formatText('italic')">I</button>
+                  <button class="toolbar-btn" (click)="formatText('underline')">U</button>
+                  <button class="toolbar-btn" (click)="addHeading()">H</button>
+                  <button class="toolbar-btn" (click)="addList('bullet')">•</button>
+                  <button class="toolbar-btn" (click)="addList('number')">1.</button>
+                </div>
+                <textarea 
+                  class="form-textarea" 
+                  rows="10" 
+                  placeholder="Write your article content here..." 
+                  [(ngModel)]="newArticle.content"
+                ></textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Cover Image</label>
+              <div class="image-upload-container">
+                <div 
+                  class="image-drop-zone"
+                  (dragover)="onDragOver($event)"
+                  (drop)="onDrop($event)"
+                  [class.dragging]="isDragging"
+                >
+                  <input 
+                    type="file" 
+                    #fileInput
+                    (change)="onFileSelected($event)"
+                    accept="image/*"
+                    class="file-input"
+                  >
+                  <div class="upload-content" *ngIf="!newArticle.imagePreview">
+                    <span class="upload-icon">📁</span>
+                    <p>Drag and drop an image here or</p>
+                    <button class="browse-btn" (click)="fileInput.click()">Browse Files</button>
+                  </div>
+                  <img 
+                    *ngIf="newArticle.imagePreview" 
+                    [src]="newArticle.imagePreview" 
+                    class="image-preview"
+                    alt="Article cover"
+                  >
+                </div>
+                <p class="upload-hint">Recommended: 1200x630px, Max size: 5MB</p>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Tags</label>
+              <div class="tags-input">
+                <div class="tags-list">
+                  <span class="tag" *ngFor="let tag of newArticle.tags">
+                    {{ tag }}
+                    <button class="remove-tag" (click)="removeTag(tag)">×</button>
+                  </span>
+                </div>
+                <input 
+                  type="text" 
+                  class="tag-input"
+                  placeholder="Add tags..."
+                  [(ngModel)]="tagInput"
+                  (keydown.enter)="addTag()"
+                >
+              </div>
+            </div>
+            
+            <div class="editor-actions">
+              <button class="save-draft-btn">Save as Draft</button>
+              <button 
+                class="publish-btn" 
+                [disabled]="!isFormValid()"
+                (click)="publishArticle()"
+              >
+                Publish Article
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Rest of the template remains the same -->
+    </div>

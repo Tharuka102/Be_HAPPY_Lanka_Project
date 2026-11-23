@@ -1,0 +1,81 @@
+<div class="requests-container">
+      <h1 class="page-title">Appointment Requests</h1>
+      
+      <div class="tabs">
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'pending'"
+          (click)="setActiveTab('pending')"
+        >
+          Pending
+          <span class="badge">{{ pendingAppointments.length }}</span>
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'approved'"
+          (click)="setActiveTab('approved')"
+        >
+          Approved
+          <span class="badge">{{ approvedAppointments.length }}</span>
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'all'"
+          (click)="setActiveTab('all')"
+        >
+          All Requests
+          <span class="badge">{{ appointments.length }}</span>
+        </button>
+      </div>
+      
+      <div class="requests-list">
+        <div class="request-card" *ngFor="let appointment of filteredAppointments">
+          <div class="request-header">
+            <div class="patient-info">
+              <div class="patient-avatar">
+                <img [src]="appointment.patientImage" alt="{{ appointment.patientName }}">
+              </div>
+              <div class="patient-details">
+                <h3 class="patient-name">{{ appointment.patientName }}</h3>
+                <p class="appointment-time">{{ appointment.date }} at {{ appointment.time }}</p>
+              </div>
+            </div>
+            <span class="status-badge" [class]="appointment.status">
+              {{ appointment.status | titlecase }}
+            </span>
+          </div>
+          
+          <div class="request-body">
+            <p class="request-notes">{{ appointment.notes }}</p>
+          </div>
+          
+          <div class="request-actions">
+            <button 
+              class="approve-btn" 
+              [disabled]="appointment.status === 'approved' || appointment.status === 'completed'"
+              (click)="updateStatus(appointment.id, 'approved')"
+            >
+              Approve
+            </button>
+            <button 
+              class="reject-btn" 
+              [disabled]="appointment.status === 'rejected'"
+              (click)="updateStatus(appointment.id, 'rejected')"
+            >
+              Reject
+            </button>
+            <button 
+              class="complete-btn" 
+              [disabled]="appointment.status !== 'approved'"
+              (click)="updateStatus(appointment.id, 'completed')"
+            >
+              Mark as Completed
+            </button>
+          </div>
+        </div>
+        
+        <div class="empty-state" *ngIf="filteredAppointments.length === 0">
+          <p class="empty-message">No {{ activeTab }} requests found.</p>
+        </div>
+      </div>
+    </div>

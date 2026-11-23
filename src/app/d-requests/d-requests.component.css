@@ -1,0 +1,214 @@
+.requests-container {
+      width: 100%;
+    }
+    
+    .page-title {
+      margin-bottom: var(--spacing-lg);
+      color: var(--text-primary);
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--divider-color);
+      margin-bottom: var(--spacing-lg);
+      overflow-x: auto;
+    }
+    
+    .tab-btn {
+      padding: var(--spacing-md) var(--spacing-lg);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-secondary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      white-space: nowrap;
+    }
+    
+    .tab-btn.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+    }
+    
+    .badge {
+      background-color: var(--background-light);
+      color: var(--text-secondary);
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+    }
+    
+    .requests-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .request-card {
+      background-color: var(--background-main);
+      border-radius: var(--border-radius-md);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .request-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    
+    .request-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .patient-info {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    .patient-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    
+    .patient-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .patient-name {
+      margin: 0 0 var(--spacing-xs);
+      font-size: 1.1rem;
+    }
+    
+    .appointment-time {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .status-badge {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--border-radius-sm);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .status-badge.pending {
+      background-color: var(--warning-color);
+      color: white;
+    }
+    
+    .status-badge.approved {
+      background-color: var(--success-color);
+      color: white;
+    }
+    
+    .status-badge.rejected {
+      background-color: var(--error-color);
+      color: white;
+    }
+    
+    .status-badge.completed {
+      background-color: var(--secondary-dark);
+      color: white;
+    }
+    
+    .request-body {
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .request-notes {
+      margin: 0;
+      color: var(--text-primary);
+    }
+    
+    .request-actions {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+    
+    .approve-btn, .reject-btn, .complete-btn {
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: none;
+      border-radius: var(--border-radius-sm);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    
+    .approve-btn {
+      background-color: var(--success-color);
+      color: white;
+    }
+    
+    .approve-btn:hover:not(:disabled) {
+      background-color: #4caf50;
+    }
+    
+    .reject-btn {
+      background-color: var(--error-color);
+      color: white;
+    }
+    
+    .reject-btn:hover:not(:disabled) {
+      background-color: #e53935;
+    }
+    
+    .complete-btn {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    
+    .complete-btn:hover:not(:disabled) {
+      background-color: var(--secondary-dark);
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .empty-state {
+      padding: var(--spacing-lg);
+      text-align: center;
+      color: var(--text-secondary);
+    }
+    
+    .empty-message {
+      margin: 0;
+      font-size: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .request-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+      }
+      
+      .status-badge {
+        align-self: flex-start;
+      }
+      
+      .request-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .approve-btn, .reject-btn, .complete-btn {
+        width: 100%;
+      }
+    }
+  

@@ -1,0 +1,46 @@
+<nav class="categories">
+    <ul [class.active]="menuActive">
+      <li><button class="filter-chip" [class.active]="selectedCategory === 'all'" (click)="filterArticles('all')" [attr.data-count]="getCategoryCount('all')">All</button></li>
+      <li><button class="filter-chip" [class.active]="selectedCategory === 'anxiety'" (click)="filterArticles('anxiety')" [attr.data-count]="getCategoryCount('anxiety')">Anxiety</button></li>
+      <li><button class="filter-chip" [class.active]="selectedCategory === 'meditation'" (click)="filterArticles('meditation')" [attr.data-count]="getCategoryCount('meditation')">Meditation</button></li>
+      <li><button class="filter-chip" [class.active]="selectedCategory === 'therapy'" (click)="filterArticles('therapy')" [attr.data-count]="getCategoryCount('therapy')">Therapy</button></li>
+      <li><button class="filter-chip" [class.active]="selectedCategory === 'growth'" (click)="filterArticles('growth')" [attr.data-count]="getCategoryCount('growth')">Personal Growth</button></li>
+      <li><button class="filter-chip" [class.active]="selectedCategory === 'stress'" (click)="filterArticles('stress')" [attr.data-count]="getCategoryCount('stress')">Stress Management</button></li>
+    </ul>
+  </nav>
+  
+  <main class="articles">
+    <article class="card" *ngFor="let article of getFilteredArticles()" (click)="openPopup(article)" [attr.data-categories]="article.categories.join(',')">
+      <div class="card-image" [class]="article.image"></div>
+      <div class="card-content">
+        <h2>{{article.title}}</h2>
+        <p>{{article.description}}</p>
+        <div class="card-meta">
+          <span class="date">{{article.date}}</span>
+          <span class="author">{{article.author}}</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag" *ngFor="let tag of article.tags">{{tag}}</span>
+        </div>
+      </div>
+    </article>
+  </main>
+  
+  <div class="popup-overlay" [class.active]="showPopup" (click)="closePopup()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <button class="popup-close" (click)="closePopup()">✕</button>
+      <div class="popup-header" *ngIf="selectedArticle">
+        <div [class]="'card-image ' + selectedArticle.image"></div>
+      </div>
+      <div class="popup-body" *ngIf="selectedArticle">
+        <h1 class="popup-title">{{selectedArticle.title}}</h1>
+        <div class="popup-meta">
+          <span class="date">{{selectedArticle.date}}</span>
+          <span class="author">{{selectedArticle.author}}</span>
+        </div>
+        <div class="content">
+          <p>{{selectedArticle.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>

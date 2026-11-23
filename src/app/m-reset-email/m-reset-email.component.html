@@ -1,0 +1,25 @@
+<div class="reset-password-container">
+    <div class="reset-password-card">
+      <h2>Reset Password</h2>
+      <p class="step-indicator">Step 1 of 3</p>
+      <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email"
+            [class.error]="email?.invalid && email?.touched"
+            placeholder="Enter your email address"
+          >
+          <div class="error-message" *ngIf="email?.invalid && email?.touched">
+            <span *ngIf="email?.errors?.['required']">Email is required</span>
+            <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="emailForm.invalid" >Send Reset Code</button>
+        <a routerLink="/m-login" class="back-to-login">Back to Login</a>
+      </form>
+    </div>
+  </div>

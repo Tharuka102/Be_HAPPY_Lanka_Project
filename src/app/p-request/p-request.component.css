@@ -1,0 +1,103 @@
+
+.container{
+  background: linear-gradient(135deg, #e9d5ff 0%, #a855f7 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.request-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #0a2540;
+  font-size: 2rem;
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.doctor-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.doctor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-info {
+  padding: 1.5rem;
+}
+
+.doctor-info h2 {
+  margin: 0;
+  color: #0a2540;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.qualification {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.specialization {
+  color: #c00bd8;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.view-btn {
+  background-color: #e406d9;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+  background-color: #094c8f;
+}
+
+@media (max-width: 768px) {
+  .request-container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .doctor-grid {
+    gap: 1rem;
+  }
+}
+

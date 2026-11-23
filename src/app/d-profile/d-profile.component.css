@@ -1,0 +1,277 @@
+.profile-container {
+      width: 100%;
+    }
+    
+    .page-title {
+      margin-bottom: var(--spacing-lg);
+      color: var(--text-primary);
+    }
+    
+    .profile-header {
+      display: flex;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .profile-image-container {
+      position: relative;
+    }
+    
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary-light);
+    }
+    
+    .change-photo-btn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .change-photo-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .profile-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .doctor-name {
+      margin: 0 0 var(--spacing-xs);
+      font-size: 1.75rem;
+    }
+    
+    .doctor-specialization {
+      margin: 0 0 var(--spacing-sm);
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+    
+    .experience-badge {
+      display: inline-block;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background-color: rgba(126, 87, 194, 0.1);
+      color: var(--primary-color);
+      border-radius: var(--border-radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .profile-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--divider-color);
+      margin-bottom: var(--spacing-lg);
+      overflow-x: auto;
+    }
+    
+    .tab-btn {
+      padding: var(--spacing-md) var(--spacing-lg);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-secondary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .tab-btn.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+    }
+    
+    .details-card {
+      background-color: var(--background-main);
+      border-radius: var(--border-radius-md);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .info-row {
+      display: flex;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .info-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .info-group.full-width {
+      width: 100%;
+    }
+    
+    .info-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .info-input, .info-textarea {
+      padding: var(--spacing-sm);
+      border: 1px solid var(--divider-color);
+      border-radius: var(--border-radius-sm);
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.2s ease;
+    }
+    
+    .info-input:focus, .info-textarea:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+    
+    .info-textarea {
+      resize: vertical;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: var(--spacing-sm);
+      justify-content: flex-end;
+    }
+    
+    .save-btn, .cancel-btn, .update-password-btn, .save-settings-btn {
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border: none;
+      border-radius: var(--border-radius-sm);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    
+    .save-btn, .update-password-btn, .save-settings-btn {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .save-btn:hover, .update-password-btn:hover, .save-settings-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .cancel-btn {
+      background-color: #f5f5f5;
+      color: var(--text-primary);
+    }
+    
+    .cancel-btn:hover {
+      background-color: #e0e0e0;
+    }
+    
+    .settings-title {
+      margin: 0 0 var(--spacing-lg);
+      font-size: 1.25rem;
+    }
+    
+    .settings-section {
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .settings-subtitle {
+      margin: 0 0 var(--spacing-md);
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .notification-option {
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      cursor: pointer;
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #f5f5f5;
+      border: 1px solid var(--divider-color);
+      border-radius: 3px;
+    }
+    
+    .checkbox-container:hover input ~ .checkmark {
+      background-color: #e0e0e0;
+    }
+    
+    .checkbox-container input:checked ~ .checkmark {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    .checkbox-container input:checked ~ .checkmark:after {
+      display: block;
+    }
+    
+    .checkbox-container .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    
+    .update-password-btn, .save-settings-btn {
+      margin-top: var(--spacing-md);
+    }
+    
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .info-row {
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .save-btn, .cancel-btn {
+        width: 100%;
+      }
+    }

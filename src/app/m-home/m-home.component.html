@@ -1,0 +1,63 @@
+<div class="home-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to Be Happy Lanka</h1>
+        <p>Your journey to complete wellness starts here</p>
+        <button class="cta-button">Book Consultation</button>
+      </div>
+    </section>
+  
+    <!-- Services Section -->
+    <section class="services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card" *ngFor="let service of services">
+          <div class="service-icon">{{service.icon}}</div>
+          <h3>{{service.title}}</h3>
+          <p>{{service.description}}</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- About Section -->
+    <section class="about">
+      <div class="about-content">
+        <h2>About Be Happy Lanka</h2>
+        <p>We are dedicated to promoting holistic wellness in Sri Lanka through comprehensive healthcare services, mental health support, and wellness programs. Our team of experienced professionals is committed to helping you achieve optimal health and happiness.</p>
+      </div>
+    </section>
+  
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+          <div class="rating">
+            <span *ngFor="let star of [1,2,3,4,5]">⭐</span>
+          </div>
+          <p>{{testimonial.text}}</p>
+          <h4>{{testimonial.name}}</h4>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Contact Section -->
+    <section class="contact">
+      <h2>Get in Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <p>📍 Colombo, Sri Lanka</p>
+          <p>📞 +94 XX XXX XXXX</p>
+          <p>✉️ infobehappylanka.com</p>
+        </div>
+        <div class="contact-hours">
+          <h3>Opening Hours</h3>
+          <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+          <p>Saturday: 9:00 AM - 2:00 PM</p>
+          <p>Sunday: Closed</p>
+        </div>
+      </div>
+    </section>
+  </div>

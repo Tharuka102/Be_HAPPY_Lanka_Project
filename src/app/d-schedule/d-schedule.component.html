@@ -1,0 +1,81 @@
+<div class="schedule-container">
+      <h1 class="page-title">My Schedule</h1>
+      
+      <div class="schedule-card">
+        <div class="card-header">
+          <h2 class="card-title">Weekly Availability</h2>
+          <div class="header-actions">
+            <button class="copy-btn">Copy Last Week</button>
+            <button class="reset-btn">Reset Schedule</button>
+          </div>
+        </div>
+        
+        <div class="schedule-instructions">
+          <p>Click on a time slot to toggle its availability status. Green slots are available for patients to book appointments.</p>
+        </div>
+        
+        <div class="schedule-table-container">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Morning <span class="time-range">(8:00 AM - 12:00 PM)</span></th>
+                <th>Afternoon <span class="time-range">(1:00 PM - 4:00 PM)</span></th>
+                <th>Evening <span class="time-range">(5:00 PM - 8:00 PM)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let day of schedule?.weekSchedule">
+                <td class="day-cell">{{ day.day }}</td>
+                <td 
+                  class="time-slot" 
+                  [class.available]="day.morning.isAvailable"
+                  [class.unavailable]="!day.morning.isAvailable"
+                  (click)="toggleTimeSlot(day.day, 'morning')"
+                >
+                  <span class="slot-time">{{ day.morning.start }} - {{ day.morning.end }}</span>
+                  <span class="slot-status">{{ day.morning.isAvailable ? 'Available' : 'Unavailable' }}</span>
+                </td>
+                <td 
+                  class="time-slot" 
+                  [class.available]="day.afternoon.isAvailable"
+                  [class.unavailable]="!day.afternoon.isAvailable"
+                  (click)="toggleTimeSlot(day.day, 'afternoon')"
+                >
+                  <span class="slot-time">{{ day.afternoon.start }} - {{ day.afternoon.end }}</span>
+                  <span class="slot-status">{{ day.afternoon.isAvailable ? 'Available' : 'Unavailable' }}</span>
+                </td>
+                <td 
+                  class="time-slot" 
+                  [class.available]="day.evening.isAvailable"
+                  [class.unavailable]="!day.evening.isAvailable"
+                  (click)="toggleTimeSlot(day.day, 'evening')"
+                >
+                  <span class="slot-time">{{ day.evening.start }} - {{ day.evening.end }}</span>
+                  <span class="slot-status">{{ day.evening.isAvailable ? 'Available' : 'Unavailable' }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="schedule-actions">
+          <button class="save-btn" (click)="saveSchedule()">Save Schedule</button>
+        </div>
+      </div>
+      
+      <div class="schedule-stats">
+        <div class="stat-card">
+          <h3 class="stat-title">Total Working Hours</h3>
+          <p class="stat-value">{{ calculateTotalHours() }} hours/week</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-title">Available Time Slots</h3>
+          <p class="stat-value">{{ calculateAvailableSlots() }} slots</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-title">Utilization Rate</h3>
+          <p class="stat-value">{{ calculateUtilizationRate() }}%</p>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,129 @@
+.reset-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e2c6ff 0%, #c4b5fd 100%);
+  padding: 20px;
+}
+
+.reset-password-card {
+  background: white;
+  padding: 90px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+
+.step-indicator {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 1px;
+  border: 1px solid #a7a5a5;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #8b5cf6;
+  outline: none;
+}
+
+input.error {
+  border-color: #dc3545;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}
+
+button:hover:not(:disabled) {
+  background: #7c3aed;
+}
+
+button:disabled {
+  background-color: #c4b5fd;
+  cursor: not-allowed;
+}
+
+button.secondary-button {
+  background-color: white;
+  border: 1px solid #8b5cf6;
+  color: #8b5cf6;
+}
+
+button.secondary-button:hover:not(:disabled) {
+  background: #f8f8f8;
+}
+
+.back-to-login,
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #8b5cf6;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.back-to-login:hover,
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .reset-password-card {
+    padding: 40px 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  input {
+    padding: 10px 12px;
+  }
+}

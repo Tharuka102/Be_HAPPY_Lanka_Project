@@ -1,0 +1,19 @@
+<div class="container">
+<div class="request-container">
+  <h1 class="title">Our Specialist Doctors</h1>
+  
+  <div class="doctor-grid">
+    <div class="doctor-card" *ngFor="let doctor of doctors">
+      <div class="doctor-image">
+        <img [src]="doctor.imageUrl" [alt]="doctor.name">
+      </div>
+      <div class="doctor-info">
+        <h2>{{doctor.name}}</h2>
+        <p class="qualification">{{doctor.qualification}}</p>
+        <p class="specialization">{{doctor.specialization}}</p>
+        <button class="view-btn" (click)="onViewDoctor()">View</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

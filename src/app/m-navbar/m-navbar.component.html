@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <a routerLink="/m-home" class="logo">
+      <span class="logo-text">Logo</span>
+      <div class="logo-line"></div>
+    </a>
+
+    <button class="menu-toggle" [class.active]="isMenuOpen" (click)="toggleMenu()" aria-label="Toggle Menu">
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </button>
+
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li class="nav-item" *ngFor="let item of menuItems">
+        <a [routerLink]="item.route" routerLinkActive="active" (click)="closeMenu()">
+          <span class="nav-icon">{{item.icon}}</span>
+          <span class="nav-text">{{item.text}}</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="auth-buttons" [class.active]="isMenuOpen">
+      <a routerLink="/m-login" class="btn btn-login" (click)="closeMenu()">
+        <span class="nav-icon">👤</span>
+        <span class="btn-text">Login</span>
+      </a>
+      <div class="divider"></div>
+      <a routerLink="/m-register-choice" class="btn btn-register" (click)="closeMenu()">
+        <span class="nav-icon">✨</span>
+        <span class="btn-text">Sign Up</span>
+      </a>
+    </div>
+  </div>
+</nav>

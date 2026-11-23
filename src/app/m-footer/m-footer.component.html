@@ -1,0 +1,32 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <div class="copyright">
+        <span class="year">© 2025</span>
+        <span class="company">IDET</span>
+        <span class="separator">|</span>
+        <a routerLink="/home" class="brand-link">
+          <span class="gradient-text">Be Happy Lanka</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="footer-nav">
+      <ul class="footer-links">
+        <li class="footer-item" *ngFor="let link of footerLinks; let i = index" [style.--index]="i">
+          <a [routerLink]="link.url" class="footer-link">
+            <span class="link-icon">{{link.icon}}</span>
+            <span class="link-text">{{link.text}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="social-links">
+      <a [href]="social.url" class="social-link" *ngFor="let social of socialLinks" 
+         [attr.aria-label]="social.name" target="_blank" rel="noopener noreferrer">
+        {{social.icon}}
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,163 @@
+<div class="profile-container">
+      <h1 class="page-title">My Profile</h1>
+      
+      <div class="profile-content">
+        <div class="profile-header">
+          <div class="profile-image-container">
+            <img [src]="doctor.profilePic" alt="Doctor profile" class="profile-image">
+            <button class="change-photo-btn">Change Photo</button>
+          </div>
+          
+          <div class="profile-summary">
+            <h2 class="doctor-name">{{ doctor.name }}</h2>
+            <p class="doctor-specialization">{{ doctor.specialization }}</p>
+            <div class="experience-badge">
+              <span>{{ doctor.yearsOfExperience }}+ years experience</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="profile-tabs">
+          <button 
+            class="tab-btn" 
+            [class.active]="activeTab === 'personal'"
+            (click)="activeTab = 'personal'"
+          >
+            Personal Information
+          </button>
+          <button 
+            class="tab-btn" 
+            [class.active]="activeTab === 'professional'"
+            (click)="activeTab = 'professional'"
+          >
+            Professional Details
+          </button>
+          <button 
+            class="tab-btn" 
+            [class.active]="activeTab === 'settings'"
+            (click)="activeTab = 'settings'"
+          >
+            Settings
+          </button>
+        </div>
+        
+        <div class="profile-details" *ngIf="activeTab === 'personal'">
+          <div class="details-card">
+            <div class="info-row">
+              <div class="info-group">
+                <label class="info-label">Age</label>
+                <input type="number" class="info-input" [(ngModel)]="doctor.age">
+              </div>
+              <div class="info-group">
+                <label class="info-label">Gender</label>
+                <select class="info-input" [(ngModel)]="doctor.gender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="info-row">
+              <div class="info-group">
+                <label class="info-label">Phone</label>
+                <input type="tel" class="info-input" [(ngModel)]="doctor.contactNumber">
+              </div>
+              <div class="info-group">
+                <label class="info-label">Email</label>
+                <input type="email" class="info-input" [(ngModel)]="doctor.email">
+              </div>
+            </div>
+            
+            <div class="info-row">
+              <div class="info-group full-width">
+                <label class="info-label">Bio</label>
+                <textarea class="info-textarea" rows="4" [(ngModel)]="doctor.bio"></textarea>
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <button class="save-btn" (click)="saveProfile()">Save Changes</button>
+              <button class="cancel-btn">Cancel</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="profile-details" *ngIf="activeTab === 'professional'">
+          <div class="details-card">
+            <div class="info-row">
+              <div class="info-group">
+                <label class="info-label">Specialization</label>
+                <input type="text" class="info-input" [(ngModel)]="doctor.specialization">
+              </div>
+              <div class="info-group">
+                <label class="info-label">Years of Experience</label>
+                <input type="number" class="info-input" [(ngModel)]="doctor.yearsOfExperience">
+              </div>
+            </div>
+            
+            <div class="info-row">
+              <div class="info-group">
+                <label class="info-label">Qualifications</label>
+                <input type="text" class="info-input" [(ngModel)]="doctor.qualification">
+              </div>
+              <div class="info-group">
+                <label class="info-label">License Number</label>
+                <input type="text" class="info-input" [(ngModel)]="doctor.licenseNumber">
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <button class="save-btn" (click)="saveProfile()">Save Changes</button>
+              <button class="cancel-btn">Cancel</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="profile-details" *ngIf="activeTab === 'settings'">
+          <div class="details-card">
+            <h3 class="settings-title">Account Settings</h3>
+            
+            <div class="settings-section">
+              <h4 class="settings-subtitle">Change Password</h4>
+              <div class="info-row">
+                <div class="info-group full-width">
+                  <label class="info-label">Current Password</label>
+                  <input type="password" class="info-input">
+                </div>
+              </div>
+              <div class="info-row">
+                <div class="info-group">
+                  <label class="info-label">New Password</label>
+                  <input type="password" class="info-input">
+                </div>
+                <div class="info-group">
+                  <label class="info-label">Confirm New Password</label>
+                  <input type="password" class="info-input">
+                </div>
+              </div>
+              <button class="update-password-btn">Update Password</button>
+            </div>
+            
+            <div class="settings-section">
+              <h4 class="settings-subtitle">Notification Preferences</h4>
+              <div class="notification-option">
+                <label class="checkbox-container">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  Email notifications for new appointment requests
+                </label>
+              </div>
+              <div class="notification-option">
+                <label class="checkbox-container">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  Email reminders for upcoming appointments
+                </label>
+              </div>
+              <button class="save-settings-btn">Save Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

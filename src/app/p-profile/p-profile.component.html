@@ -1,0 +1,125 @@
+<div class="background">
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="avatar-container">
+        <img [src]="profilePicUrl" alt="Profile Picture" class="avatar">
+        <input type="file" #fileInput hidden accept="image/*" (change)="onProfilePicChange($event)">
+        <button class="change-avatar-btn" (click)="fileInput.click()">
+          <i class="bi bi-camera"></i>
+        </button>
+      </div>
+      <h2>A.B.C. Perera</h2>
+      <span class="role-badge">Patient</span>
+    </div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+      <h3>My Profile</h3>
+      
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" type="text" formControlName="fullName" placeholder="Enter your full name">
+        <span class="error-message" *ngIf="profileForm.get('fullName')?.touched && profileForm.get('fullName')?.invalid">
+          {{getErrorMessage('fullName')}}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" type="text" formControlName="address" placeholder="Enter your address">
+        <span class="error-message" *ngIf="profileForm.get('address')?.touched && profileForm.get('address')?.invalid">
+          {{getErrorMessage('address')}}
+        </span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="age">Age</label>
+          <input id="age" type="number" formControlName="age" placeholder="Enter your age">
+          <span class="error-message" *ngIf="profileForm.get('age')?.touched && profileForm.get('age')?.invalid">
+            {{getErrorMessage('age')}}
+          </span>
+        </div>
+
+        
+      </div>
+
+      <div class="form-group half">
+        <label for="mobileNumber">Mobile Number</label>
+        <input id="mobileNumber" type="tel" formControlName="mobileNumber" placeholder="Enter mobile number">
+        <span class="error-message" *ngIf="profileForm.get('mobileNumber')?.touched && profileForm.get('mobileNumber')?.invalid">
+          {{getErrorMessage('mobileNumber')}}
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" formControlName="gender" value="male">
+            <span>Male</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" formControlName="gender" value="female">
+            <span>Female</span>
+          </label>
+        </div>
+        <span class="error-message" *ngIf="profileForm.get('gender')?.touched && profileForm.get('gender')?.invalid">
+          {{getErrorMessage('gender')}}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="Enter your email">
+        <span class="error-message" *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.invalid">
+          {{getErrorMessage('email')}}
+        </span>
+      </div>
+
+      <div class="password-section">
+        <h4>Change Password</h4>
+        
+        <div class="form-group">
+          <label for="oldPassword">Old Password</label>
+          <input id="oldPassword" type="password" formControlName="oldPassword" placeholder="Enter old password">
+          <span class="error-message" *ngIf="profileForm.get('oldPassword')?.touched && profileForm.get('oldPassword')?.invalid">
+            {{getErrorMessage('oldPassword')}}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="newPassword">New Password</label>
+          <div class="password-input">
+            <input id="newPassword" [type]="passwordVisible ? 'text' : 'password'" 
+                   formControlName="newPassword" placeholder="Enter new password">
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility('new')">
+              <i class="bi" [class.bi-eye]="!passwordVisible" [class.bi-eye-slash]="passwordVisible"></i>
+            </button>
+          </div>
+          <span class="error-message" *ngIf="profileForm.get('newPassword')?.touched && profileForm.get('newPassword')?.invalid">
+            {{getErrorMessage('newPassword')}}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="password-input">
+            <input id="confirmPassword" [type]="confirmPasswordVisible ? 'text' : 'password'" 
+                   formControlName="confirmPassword" placeholder="Confirm new password">
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility('confirm')">
+              <i class="bi" [class.bi-eye]="!confirmPasswordVisible" [class.bi-eye-slash]="confirmPasswordVisible"></i>
+            </button>
+          </div>
+          <span class="error-message" *ngIf="profileForm.get('confirmPassword')?.touched && profileForm.get('confirmPassword')?.invalid">
+            {{getErrorMessage('confirmPassword')}}
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="profileForm.invalid">
+        Update Profile
+      </button>
+    </form>
+  </div>
+</div>
+</div>
